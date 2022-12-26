@@ -15,7 +15,23 @@ public class Graph <T extends Comparable>{
         return null;
     }
     public int inDegree(String id){
-       return 0;
+        Vertex<T> current = findVertex(id);
+        int counter = 0;
+        if (current==null)
+            System.out.println("there isnot vertex");
+        else{
+            Vertex<T> iterator = head;
+            while (iterator!=null){
+                Edge iterator2 = current.EdgeLink;
+                while (iterator2!=null){
+                    if (iterator2.vertexId.compareTo(id)==0){
+                        counter++;
+                    }iterator2=iterator2.nextEdge;
+                }iterator=iterator.nextVertex;
+            }
+        }
+        return counter;
+
 
     }
     public int outDegree(String id){
